@@ -15,7 +15,7 @@ JBoss Datagrid is a cache solution that stores data (as key-value) in memory. On
 
 Following image showcase how one could perform jdg upgrade from one version to another. 
 
-image::templates/solution_architecture.png[SolutionArchitecture, 800, 450]
+image::images/solution_architecture.png[SolutionArchitecture, 800, 450]
 
 1. Initially a jdg cluster is deployed on Openshift. Data could be acccessed via Openshift routes and service url.
 2. A new version of jdg cluster is then deployed. Cache defined in Datagrid is "RemoteCache" that points to old jdg server via HotRod. Also routes and service selectors are updated to forward request (to upload or retrieve data) from new jdg. If new jdg does not find a key, it would lazily load data from old jdg.
