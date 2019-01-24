@@ -382,10 +382,7 @@
     <socket-binding name="txn-recovery-environment" port="4712"/>
     <socket-binding name="txn-status-manager" port="4713"/>
     <outbound-socket-binding name="remote-store-hotrod-server">
-      <remote-destination host="172.30.232.114" port="11333"/>
-      <!--
       <remote-destination host="<REPLACE SOURCE JDG SERIVCE URL>" port="11333"/>
-      -->
     </outbound-socket-binding>
     <outbound-socket-binding name="remote-store-rest-server">
       <remote-destination host="remote-host" port="8080"/>

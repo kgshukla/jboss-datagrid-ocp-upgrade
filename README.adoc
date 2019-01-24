@@ -234,18 +234,20 @@ The above command has successfully replicated the data to new jdg.
 Give admin role to admin user first, so that you could see deployments in jdg project (you cannot login using system:admin user in web console.
 
 1. Change mycache definition from
-image::images/cm-orig-cache.png[OldCacheDef, 600, 480]
+
+image::images/cm-orig-cache.png[OldCacheDef, 700, 480]
 
 to 
 
-image::images/cm-new-cache.png[NewCacheDef, 600, 480]
+image::images/cm-new-cache.png[NewCacheDef, 700, 480]
 
 2. Change hot rod server from
-image::images/cm-old-hotrod-server.png[OldHotRod, 600, 480]
+
+image::images/cm-old-hotrod-server.png[OldHotRod, 700, 480]
 
 to 
 
-image::images/cm-new-hotrod-server.png[OldHotRod, 600, 480]
+image::images/cm-new-hotrod-server.png[OldHotRod, 700, 480]
 
 
 Once completed, roll out the new changes
