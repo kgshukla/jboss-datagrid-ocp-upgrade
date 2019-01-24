@@ -1,1 +1,0 @@
-# jboss-datagrid-ocp-upgrade
