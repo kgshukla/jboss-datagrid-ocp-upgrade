@@ -1,20 +1,28 @@
-= Orchestrating JBoss Datagrid upgrades in Openshift/Kubernetes
+= Orchestrating JBoss Datagrid Upgrades in Openshift/Kubernetes
 
 === Introduction
 
-This demo aims to provide starting point/code-sample to perform Datagrid upgrade in Openshift
+This demo aims to provide starting point/code-sample to perform Datagrid upgrade in Openshift. Demo uses following versions of minishift and openshift
 
-minishift v1.25.0+90fb23e
-Openshift version v3.11.0
+1. minishift v1.25.0+90fb23e
+2. Openshift version v3.11.0
 
 === Challenges
 
+JBoss Datagrid is a cache solution that stores data (as key-value) in memory. One of the requirement with in memory solution is to migrate data from one jdg version to new jdg version without losing in-memory data. And this becomes a bit tricky when datagrid is running on Openshift or kubernetes. 
 
 === Solution Architecture
 
-image::docs/multiple_apps_strategy.png[MultipleApps, 600, 480]
+Following image showcase how one could perform jdg upgrade from one version to another. 
 
+image::templates/solution_architecture.png[SolutionArchitecture, 800, 450]
 
+1. Initially a jdg cluster is deployed on Openshift. Data could be acccessed via Openshift routes and service url.
+2. A new version of jdg cluster is then deployed. Cache defined in Datagrid is "RemoteCache" that points to old jdg server via HotRod. Also routes and service selectors are updated to forward request (to upload or retrieve data) from new jdg. If new jdg does not find a key, it would lazily load data from old jdg.
+3. Datagrid cli is used in one of the newly created pod to sync data between two clusters. 
+4. In step 4, a rolling uprade of new jdg cluster is started. We update the cache to be a normal cache (instead of remotecache) in new pods. New pods joins the cluster and data is replicated.
+5. In step 5, rolling upgrade is completed and now the cache in all new pods are in-place cache. 
+6. Now the old jdg could be easily deleted.
 
 === Run Demo
 ==== Step 1: Install minishift
