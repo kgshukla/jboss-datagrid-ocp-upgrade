@@ -247,7 +247,7 @@ image::images/cm-orig-cache.png[OldCacheDef, 800, 480]
 
 to 
 
-image::images/cm-new-cache.png[NewCacheDef, 800, 480]
+image::images/cn-new-cache.png[NewCacheDef, 800, 480]
 
 2. Change hot rod server from
 
